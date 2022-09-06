@@ -1,0 +1,9 @@
+.search-bar {
+    max-width: 450px;
+}
+
+.search-container{
+    background: linear-gradient(319deg, #444444, #0b0b0b);
+    padding: 20px 0;
+    margin-bottom: 25px;
+}

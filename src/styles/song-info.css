@@ -1,0 +1,81 @@
+.song-info-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 100px 0;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    max-height: 465px;
+    width: 45%;
+    max-width: 600px;
+    background: linear-gradient(49deg, #444444, #0b0b0b);
+    border-radius: 10px;
+    padding: 5% 0;
+}
+
+.cover-container {
+    width: 65%;
+}
+
+.cover-photos {
+    overflow: hidden;
+    background: linear-gradient(319deg, #444444, #0b0b0b);
+    width: fit-content;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+}
+
+.cover-photos img {
+    border: 2px solid white;
+    width: 10rem;
+}
+
+.image-list-container {
+    width: 700px;
+    height: 400px;
+}
+
+.cover-photos ul {
+    overflow: hidden;
+    gap: 40px !important;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+
+.audio-player {
+    display: flex;
+    justify-content: center;
+}
+
+.lyrics-p {
+    font-family: GTWalsheimPro;
+}
+
+@media (max-width: 900px) {
+    .song-info-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .image-list-container {
+        width: auto;
+        height: auto;
+    }
+    .cover-container,
+    .info-container {
+        width: 100%;
+    }
+    .info-container {
+        margin: 2% 0;
+    }
+}

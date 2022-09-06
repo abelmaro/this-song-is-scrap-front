@@ -1,0 +1,20 @@
+.modal-image {
+    top: 0;
+    left: 50%;
+    top: auto;
+    height: auto;
+    display: flex;
+    padding: 1rem;
+    z-index: 9999;
+    position: absolute;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #aaa;
+    transform: translate3d(-50%, 0, 0);
+    background: linear-gradient(49deg, #444444, #0b0b0b);
+}
+
+.modal-image img{
+    height: 90vh;
+}
