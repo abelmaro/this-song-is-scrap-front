@@ -6,20 +6,25 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { SongInfo } from "./components/SongInfo";
 import { motion } from "framer-motion";
+import { MagnifyingGlass } from "react-loader-spinner";
+
 function App() {
     const [artistName, setArtistName] = useState("");
     const [songName, setSongName] = useState("");
     const [songInfo, setSongInfo] = useState(null);
+    const [loading, setLoading] = useState(false);
     function getSongInfo() {
+        setLoading(true);
         setSongInfo(null);
         let query = songName + " " + artistName;
         axios
             .get("http://localhost:6060/getSongInfo/" + query)
-
             .then((response) => {
                 setSongInfo(response.data);
+                setLoading(false);
             })
             .catch((e) => {
+                setLoading(false);
                 console.error(e);
             });
     }
@@ -45,7 +50,18 @@ function App() {
                     Search!
                 </Button>
             </div>
-            {songInfo != null ? (
+            {loading ? (
+                <MagnifyingGlass
+                    visible={true}
+                    height="250"
+                    width="250"
+                    ariaLabel="MagnifyingGlass-loading"
+                    wrapperStyle={{}}
+                    wrapperClass="MagnifyingGlass-wrapper"
+                    glassColor="#c0efff"
+                    color="#e15b64"
+                />
+            ) : songInfo != null ? (
                 <>
                     <SongInfo info={songInfo} />
                 </>

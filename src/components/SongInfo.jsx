@@ -92,6 +92,9 @@ export const SongInfo = (props) => {
                                             setImageUrlSelected(img.url);
                                             setModalVisible(true);
                                         }}
+                                        onError={(e) => {
+                                            e.target.parentElement.remove();
+                                        }}
                                     />
                                 </ImageListItem>
                             ))}

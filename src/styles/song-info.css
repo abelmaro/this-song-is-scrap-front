@@ -47,10 +47,11 @@
     overflow: hidden;
     gap: 40px !important;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
+    padding: 0 2%;
 }
 
 .audio-player {
