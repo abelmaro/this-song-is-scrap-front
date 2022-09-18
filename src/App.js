@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import Button from "@mui/material/Button";
 import axios from "axios";
@@ -18,7 +18,10 @@ function App() {
         setSongInfo(null);
         let query = songName + " " + artistName;
         axios
-            .get("http://localhost:6060/getSongInfo/" + query)
+            .get(
+                "https://tsis-backend-abelmaro.vercel.app/api/getSongInfo/" +
+                    query
+            )
             .then((response) => {
                 setSongInfo(response.data);
                 setLoading(false);

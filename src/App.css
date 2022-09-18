@@ -14,14 +14,14 @@ body {
 @font-face {
     font-family: GTWalsheimPro;
     src: local(GTWalsheimPro),
-        url(../public/assets/fonts/GTWalsheimPro/GTWalsheimPro-UltraLightOblique.woff2)
+        url(./assets/fonts/GTWalsheimPro/GTWalsheimPro-UltraLightOblique.woff2)
             format("woff2");
 }
 
 @font-face {
     font-family: GTWalsheimProBold;
     src: local(GTWalsheimProBold),
-        url(../public/assets/fonts/GTWalsheimPro/GTWalsheimPro-UltraBoldOblique.woff2)
+        url(./assets/fonts/GTWalsheimPro/GTWalsheimPro-UltraBoldOblique.woff2)
             format("woff2");
 }
 

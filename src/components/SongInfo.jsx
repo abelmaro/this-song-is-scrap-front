@@ -3,7 +3,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { motion } from "framer-motion";
 import { CgPlayPauseO, CgPlayButtonO } from "react-icons/cg";
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { ModalImageView } from "./ModalImageView";
 
 export const SongInfo = (props) => {
@@ -13,9 +13,16 @@ export const SongInfo = (props) => {
 
     const audioRef = useRef(null);
     var info = props.info;
+
+    function handlePlayer() {
+        if (isPlaying) audioRef.current.pause();
+        else audioRef.current.play();
+        setIsPlaying(!isPlaying);
+    }
+
     console.log(info);
     return (
-        <>
+        <div>
             {modalVisible ? (
                 <ModalImageView
                     isToggled={modalVisible}
@@ -50,57 +57,49 @@ export const SongInfo = (props) => {
                                 <code>audio</code> element.
                             </audio>
                             {isPlaying ? (
-                                <CgPlayPauseO
-                                    onClick={() => {
-                                        audioRef.current?.pause();
-                                        setIsPlaying(false);
-                                    }}
-                                />
+                                <CgPlayPauseO onClick={() => handlePlayer()} />
                             ) : (
-                                <CgPlayButtonO
-                                    onClick={() => {
-                                        audioRef.current?.play();
-                                        setIsPlaying(true);
-                                    }}
-                                />
+                                <CgPlayButtonO onClick={() => handlePlayer()} />
                             )}
                         </div>
                     </div>
                 </div>
             </div>
             <div className="song-info-container">
-                <div className="cover-container">
-                    <div className="cover-photos">
-                        <ImageList
-                            className="image-list-container"
-                            cols={3}
-                            rowHeight={164}
-                        >
-                            {info.covers.img.map((img, i) => (
-                                <ImageListItem
-                                    key={"cover_" + i}
-                                    sx={{ padding: 1 }}
-                                >
-                                    <motion.img
-                                        initial={{ opacity: 0, x: -100 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        whileHover={{ scale: 1.1 }}
-                                        transition={{ delay: 0.1 }}
-                                        src={img.url}
-                                        loading="lazy"
-                                        onClick={() => {
-                                            setImageUrlSelected(img.url);
-                                            setModalVisible(true);
-                                        }}
-                                        onError={(e) => {
-                                            e.target.parentElement.remove();
-                                        }}
-                                    />
-                                </ImageListItem>
-                            ))}
-                        </ImageList>
+                {info.covers.length > 0 && (
+                    <div className="cover-container">
+                        <div className="cover-photos">
+                            <ImageList
+                                className="image-list-container"
+                                cols={3}
+                                rowHeight={164}
+                            >
+                                {info.covers.img.map((img, i) => (
+                                    <ImageListItem
+                                        key={"cover_" + i}
+                                        sx={{ padding: 1 }}
+                                    >
+                                        <motion.img
+                                            initial={{ opacity: 0, x: -100 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            whileHover={{ scale: 1.1 }}
+                                            transition={{ delay: 0.1 }}
+                                            src={img.url}
+                                            loading="lazy"
+                                            onClick={() => {
+                                                setImageUrlSelected(img.url);
+                                                setModalVisible(true);
+                                            }}
+                                            onError={(e) => {
+                                                e.target.parentElement.remove();
+                                            }}
+                                        />
+                                    </ImageListItem>
+                                ))}
+                            </ImageList>
+                        </div>
                     </div>
-                </div>
+                )}
                 <div className="info-container">
                     {info.lyrics !== null && info.lyrics !== "" ? (
                         info.lyrics.map((p, i) => {
@@ -113,6 +112,6 @@ export const SongInfo = (props) => {
                     )}
                 </div>
             </div>
-        </>
+        </div>
     );
 };

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { useOnClickOutside } from "../helpers/onClickOutsideRef";
 import "../styles/modal-image.css";
 
